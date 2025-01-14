@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Playas;
 
+use App\Http\Controllers\DatosController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -61,3 +62,31 @@ Route::middleware(['auth'])->group(function () {
         return view('configuracion');
     });
 });
+
+
+// -----------------------------------------
+
+// Manejo de Rutas, Controladores y Objeto Request en Laravel
+
+
+/* 1. Crear una ruta:
+    - Defina una nueva ruta en el archivo routes/web.php.
+    - La ruta debe aceptar una solicitud POST y apuntar a un método en un controlador.
+    - El punto final de la ruta será /procesar-datos.
+
+*/
+
+Route::get('/formulario', function () { 
+
+    return view('formulario');
+
+});
+
+Route::post('/procesar_datos.php', [DatosController::class,'procesar']);
+
+/* 2. Crear un controlador:
+    - Genera un controlador llamado DatosControllerusando el comando Artisan.
+    - Defina un método llamado procesardentro del controlador.
+    - Asegúrese de enlazar la ruta /procesar-datoscon este método.
+*/
+
