@@ -82,11 +82,24 @@ Route::get('/formulario', function () {
 
 });
 
-Route::post('/procesar_datos.php', [DatosController::class,'procesar']);
+
+
+
+Route::post('/procesar-datos', [DatosController::class, 'procesar']);
+
+Route::get('/procesar-datos' , [DatosController::class, 'form_procesar']);
 
 /* 2. Crear un controlador:
     - Genera un controlador llamado DatosControllerusando el comando Artisan.
     - Defina un método llamado procesardentro del controlador.
     - Asegúrese de enlazar la ruta /procesar-datoscon este método.
 */
+
+
+
+
+
+/* TAREA 2 */
+
+
 
