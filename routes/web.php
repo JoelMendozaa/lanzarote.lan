@@ -6,6 +6,8 @@ use App\Http\Controllers\Playas;
 
 use App\Http\Controllers\DatosController;
 
+use App\Http\Controllers\LibroController;
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -101,5 +103,7 @@ Route::get('/procesar-datos' , [DatosController::class, 'form_procesar']);
 
 /* TAREA 2 */
 
+Route::get('/alta-libro-tolkien' , [LibroController::class, 'alta_libro']);
+Route::get('/mostrar-libro-tolkien/{id}' , [LibroController::class, 'mostrar_libro']);
 
 
