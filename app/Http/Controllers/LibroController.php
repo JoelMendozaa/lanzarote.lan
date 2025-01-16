@@ -19,24 +19,21 @@ class LibroController extends Controller
         return view('libros.create'); // Cambiado para apuntar a 'libros/create.blade.php'
         }
 
+        public function alta_libro(Request $request)
+        {
+            $libro = new Libro();
+            $libro->nombre = $request->nombre;
+            $libro->autor = $request->autor;
+            $libro->editorial = $request->editorial;
+            $libro->anioPublicacion = $request->anioPublicacion;  
+            $libro->genero = $request->genero;                  
+            $libro->descripcion = $request->descripcion;
+            $libro->save();
+        
+            return redirect('/');  // Redirige al listado
+        }
 
-
-    // Alta de un libro con datos predefinidos
-    public function alta_libro(){
-        $libro = new Libro();
-
-        $libro->nombre = 'El señor de los anillos';
-        $libro->autor = 'Tolkien';
-        $libro->editorial = 'Anaya';
-        $libro->anioPublicacion = '26 marzo 1998';
-        $libro->genero = 'fantasia y ficción';
-        $libro->descripcion = 'Enanos y orcos';
-
-        $libro->save();
-
-        return response()->json(['message' => 'Libro creado exitosamente', 'libro' => $libro]);
-    }
-
+  
 
 
 
@@ -50,8 +47,6 @@ class LibroController extends Controller
             return response()->json(['message' => 'Libro no encontrado'], 404);
         }
     }
-
-
 
 
 

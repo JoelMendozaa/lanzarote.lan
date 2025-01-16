@@ -27,6 +27,8 @@ return new class extends Migration
             // Auditoria
             $table->timestamps();
             });
+
+
     }
 
     /**
@@ -36,5 +38,7 @@ return new class extends Migration
     {
         //
         Schema::dropIfExists('libros');
+
+
     }
 };
