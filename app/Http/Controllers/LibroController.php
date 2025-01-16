@@ -39,6 +39,9 @@ class LibroController extends Controller
         return response()->json(['message' => 'Libro creado exitosamente', 'libro' => $libro]);
     }
 
+
+
+
     // Mostrar un libro por ID
     public function mostrar_libro($id)
     {
@@ -51,12 +54,20 @@ class LibroController extends Controller
         }
     }
 
+
+
+
+
     // Listar todos los libros
     public function mostrar_todos()
     {
         $libros = Libro::all();
         return response()->json($libros);
     }
+
+
+
+
 
     // Actualizar un libro
     public function actualizar_libro(Request $request, $id)
@@ -79,6 +90,9 @@ class LibroController extends Controller
         }
     }
 
+
+
+    
     // Eliminar un libro
     public function eliminar_libro($id)
     {
