@@ -17,6 +17,8 @@ class LibrosSeeder extends Seeder
             'nombre' => 'Harry Potter',
             'editorial' => 'Anaya',
             'autor' => 'JK Rowling',
+            'anioPublicacion'=> ' 26 de junio de 1997',
+            'genero'=> 'Fantasia y ficción',
             'descripcion' => 'La piedra filosofal'
             ]);
     }

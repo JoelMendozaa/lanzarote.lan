@@ -103,7 +103,12 @@ Route::get('/procesar-datos' , [DatosController::class, 'form_procesar']);
 
 /* TAREA 2 */
 
-Route::get('/alta-libro-tolkien' , [LibroController::class, 'alta_libro']);
-Route::get('/mostrar-libro-tolkien/{id}' , [LibroController::class, 'mostrar_libro']);
-
+// Rutas para CRUD de libros
+Route::get('/libros', [LibroController::class, 'index']); // Para mostrar el listado
+Route::get('/libros/create', [LibroController::class, 'create']); // Para mostrar el formulario de creación
+Route::get('/alta-libro-tolkien', [LibroController::class, 'alta_libro']); // Crear libro
+Route::get('/mostrar-libro-tolkien/{id}', [LibroController::class, 'mostrar_libro']); // Mostrar libro por ID
+Route::get('/mostrar-todos', [LibroController::class, 'mostrar_todos']); // Listar todos los libros
+Route::put('/actualizar-libro/{id}', [LibroController::class, 'actualizar_libro']); // Actualizar libro
+Route::delete('/eliminar-libro/{id}', [LibroController::class, 'eliminar_libro']); // Eliminar libro
 
