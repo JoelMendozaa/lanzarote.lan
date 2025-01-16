@@ -15,16 +15,14 @@ class LibroController extends Controller
     }
     
 
-    public function create()
-{
-    return view('libros.create'); // Cambiado para apuntar a 'libros/create.blade.php'
-}
+    public function create(){
+        return view('libros.create'); // Cambiado para apuntar a 'libros/create.blade.php'
+        }
 
 
 
     // Alta de un libro con datos predefinidos
-    public function alta_libro()
-    {
+    public function alta_libro(){
         $libro = new Libro();
 
         $libro->nombre = 'El señor de los anillos';
@@ -43,8 +41,7 @@ class LibroController extends Controller
 
 
     // Mostrar un libro por ID
-    public function mostrar_libro($id)
-    {
+    public function mostrar_libro($id){
         $libro = Libro::find($id);
 
         if ($libro) {
@@ -59,8 +56,7 @@ class LibroController extends Controller
 
 
     // Listar todos los libros
-    public function mostrar_todos()
-    {
+    public function mostrar_todos(){
         $libros = Libro::all();
         return response()->json($libros);
     }
@@ -70,8 +66,7 @@ class LibroController extends Controller
 
 
     // Actualizar un libro
-    public function actualizar_libro(Request $request, $id)
-    {
+    public function actualizar_libro(Request $request, $id){
         $libro = Libro::find($id);
 
         if ($libro) {
@@ -92,10 +87,9 @@ class LibroController extends Controller
 
 
 
-    
+
     // Eliminar un libro
-    public function eliminar_libro($id)
-    {
+    public function eliminar_libro($id){
         $libro = Libro::find($id);
 
         if ($libro) {
