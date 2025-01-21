@@ -17,21 +17,22 @@ class LibroController extends Controller
 
     public function create(){
         return view('libros.create'); // Cambiado para apuntar a 'libros/create.blade.php'
-        }
+    }
 
-        public function alta_libro(Request $request)
-        {
-            $libro = new Libro();
-            $libro->nombre = $request->nombre;
-            $libro->autor = $request->autor;
-            $libro->editorial = $request->editorial;
-            $libro->anioPublicacion = $request->anioPublicacion;  
-            $libro->genero = $request->genero;                  
-            $libro->descripcion = $request->descripcion;
-            $libro->save();
-        
-            return redirect('/');  // Redirige al listado
-        }
+    public function alta_libro(){
+        $libro = new Libro();
+    
+        $libro->nombre = 'El señor de los anillos';
+        $libro->autor = 'Tolkien';
+        $libro->editorial = 'Anaya';
+        $libro->anioPublicacion = '1998';
+        $libro->genero = 'Fantasía';
+        $libro->descripcion = 'Enanos y orcos';
+    
+        $libro->save();
+        return redirect('/libros.mostar_libro')->with('success', 'Libro creado con éxito');
+
+    }
 
   
 
@@ -86,12 +87,9 @@ class LibroController extends Controller
     // Eliminar un libro
     public function eliminar_libro($id){
         $libro = Libro::find($id);
+        $libro->delete();
 
-        if ($libro) {
-            $libro->delete();
-            return response()->json(['message' => 'Libro eliminado exitosamente']);
-        } else {
-            return response()->json(['message' => 'Libro no encontrado'], 404);
-        }
+      return redirect()->route('libros.index')
+        ->with('success','El libro se ha eliminado correctamente');
     }
 }

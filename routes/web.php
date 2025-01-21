@@ -71,13 +71,6 @@ Route::middleware(['auth'])->group(function () {
 // Manejo de Rutas, Controladores y Objeto Request en Laravel
 
 
-/* 1. Crear una ruta:
-    - Defina una nueva ruta en el archivo routes/web.php.
-    - La ruta debe aceptar una solicitud POST y apuntar a un método en un controlador.
-    - El punto final de la ruta será /procesar-datos.
-
-*/
-
 Route::get('/formulario', function () { 
 
     return view('formulario');
@@ -91,11 +84,6 @@ Route::post('/procesar-datos', [DatosController::class, 'procesar']);
 
 Route::get('/procesar-datos' , [DatosController::class, 'form_procesar']);
 
-/* 2. Crear un controlador:
-    - Genera un controlador llamado DatosControllerusando el comando Artisan.
-    - Defina un método llamado procesardentro del controlador.
-    - Asegúrese de enlazar la ruta /procesar-datoscon este método.
-*/
 
 
 
@@ -104,11 +92,11 @@ Route::get('/procesar-datos' , [DatosController::class, 'form_procesar']);
 /* TAREA 2 */
 
 // Rutas para CRUD de libros
-Route::get('/libros', [LibroController::class, 'index']); // Para mostrar el listado
+Route::get('/libros', [LibroController::class, 'index'])->name('libros.index'); // Para mostrar el listado
 Route::get('/libros/create', [LibroController::class, 'create']); // Para mostrar el formulario de creación
-Route::get('/alta-libro-tolkien', [LibroController::class, 'alta_libro']); // Crear libro
-Route::get('/mostrar-libro-tolkien/{id}', [LibroController::class, 'mostrar_libro']); // Mostrar libro por ID
+Route::post('/libros', [LibroController::class, 'alta_libro']); // Crear libro
+Route::get('/mostrar-libro/{id}', [LibroController::class, 'mostrar_libro']); // Mostrar libro por ID
 Route::get('/mostrar-todos', [LibroController::class, 'mostrar_todos']); // Listar todos los libros
 Route::put('/actualizar-libro/{id}', [LibroController::class, 'actualizar_libro']); // Actualizar libro
-Route::delete('/eliminar-libro/{id}', [LibroController::class, 'eliminar_libro']); // Eliminar libro
+Route::delete('/libros/{libro}', [LibroController::class, 'eliminar_libro'])->name('libros.delete'); // Eliminar libro
 

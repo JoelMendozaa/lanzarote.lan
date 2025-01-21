@@ -6,7 +6,7 @@
 <div class="container">
         <h1>Listado de Libros</h1>
         <div class="btn-container">
-            <a href="{{ url('/create') }}" class="btn">Crear Nuevo Libro</a>
+            <a href="{{ url('/libros/create') }}" class="btn">Crear Nuevo Libro</a>
         </div>
         <table>
             <thead>
@@ -32,8 +32,8 @@
                         <td>{{ $libro->genero }}</td>
                         <td>{{ $libro->descripcion }}</td>
                         <td class="actions">
-                            <a href="{{ url('/edit/' . $libro->id) }}" class="btn">Editar</a>
-                            <form action="{{ url('/delete/' . $libro->id) }}" method="POST" style="display:inline;">
+                            <a href="{{ url('/libros/edit/' , $libro->id) }}" class="btn">Editar</a>
+                            <form action="{{ route('libros.delete' , $libro->id) }}" method="POST" style="display:inline;">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-danger">Eliminar</button>
