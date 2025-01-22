@@ -14,16 +14,21 @@
             <input type="text" id="autor" name="autor" required>
 
             <label for="editorial">Editorial</label>
-            <input type="text" id="editorial" name="editorial" required>
+            <select name="editorial" id="editorial" required>
+                <option value="">Selecciona la editorial...</option>
+                @foreach ($EDITORIALES as $clave_editorial => $texto_editorial)
+                    <option value="{{ $clave_editorial }}">{{ $texto_editorial }}</option>
+                @endforeach
+            </select>
 
             <label for="anioPublicacion">Año de Publicación</label>
             <input type="number" id="anioPublicacion" name="anioPublicacion" required>
 
             <label for="genero">Género</label>
-            <select id="genero" name="genero" required>
+            <select name="genero" id="genero" required>
                 <option value="">Selecciona un género...</option>
-                @foreach (['Ficción', 'Aventura', 'Drama', 'Romance', 'Terror', 'Biografia'] as $genero)
-                    <option value="{{$genero}}">{{$genero}}</option>
+                @foreach ($GENEROS as $clave_genero => $texto_genero)
+                    <option value="{{ $clave_genero }}">{{ $texto_genero }}</option>
                 @endforeach
             </select>
 

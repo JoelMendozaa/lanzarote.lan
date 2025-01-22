@@ -11,12 +11,26 @@ class LibroController extends Controller
     public function index()
     {
         $libros = Libro::all(); // Obtén todos los libros
-        return view('libros.index', compact('libros')); // Cambiado para apuntar a 'libros/index.blade.php'
+        $GENEROS = Libro:: GENEROS;
+        $EDITORIALES = Libro::EDITORIALES;
+
+        return view('libros.index', [
+            'libros' => $libros,
+            'EDITORIALES' => $EDITORIALES,
+            'GENEROS' => $GENEROS,
+            ]);
     }
     
 
     public function create(){
-        return view('libros.create'); // Cambiado para apuntar a 'libros/create.blade.php'
+
+        $GENEROS = Libro:: GENEROS;
+        $EDITORIALES = Libro::EDITORIALES;
+
+        return view('libros.create', [
+            'EDITORIALES' => $EDITORIALES,
+            'GENEROS' => $GENEROS,
+        ]); // Cambiado para apuntar a 'libros/create.blade.php'
     }
 
     public function alta_libro(){
@@ -42,11 +56,13 @@ class LibroController extends Controller
     public function mostrar_libro($id){
         $libro = Libro::find($id);
 
-        if ($libro) {
-            return "{$libro->nombre} - {$libro->autor}";
-        } else {
-            return response()->json(['message' => 'Libro no encontrado'], 404);
-        }
+        $GENEROS = Libro:: GENEROS;
+        $EDITORIALES = Libro::EDITORIALES;
+
+        return view('libros.index', [
+            'EDITORIALES' => $EDITORIALES,
+            'GENEROS' => $GENEROS,
+            ]);
     }
 
 
@@ -91,5 +107,19 @@ class LibroController extends Controller
 
       return redirect()->route('libros.index')
         ->with('success','El libro se ha eliminado correctamente');
+    }
+
+
+    public function listado()
+    {
+
+        $libros = Libro::all();
+
+        $GENEROS = Libro::GENEROS;
+        $EDITORIALES = Libro::EDITORIALES;
+
+
+        return view('libros.libro',compact('libros','GENEROS', 'EDITORIALES'));
+
     }
 }
