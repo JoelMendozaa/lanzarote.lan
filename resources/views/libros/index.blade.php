@@ -29,7 +29,7 @@
                         <td>{{ $libro->autor }}</td>
                         <td>{{ $libro->editorial }}</td>
                         <td>{{ $libro->anioPublicacion }}</td>
-                        <td>{{ $libro->genero }}</td>
+                        <td>{{ App\Models\Libro::GENEROS[$libro->genero] }}</td>
                         <td>{{ $libro->descripcion }}</td>
                         <td class="actions">
                             <a href="{{ url('/libros/edit/' , $libro->id) }}" class="btn">Editar</a>
