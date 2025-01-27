@@ -15,7 +15,7 @@
 
             <label for="editorial">Editorial</label>
             <select name="editorial" id="editorial" required>
-            <option value="{{ $clave_editorial }}">{{ $texto_editorial }}</option>
+                <option value="">Selecciona una editorial...</option>
                 @foreach ($EDITORIALES as $clave_editorial => $texto_editorial)
                     <option value="{{ $clave_editorial }}">{{ $texto_editorial }}</option>
                 @endforeach
