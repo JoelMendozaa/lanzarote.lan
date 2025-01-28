@@ -10,18 +10,23 @@ class LibroController extends Controller
 
     public function index()
     {
-        $libros = Libro::all(); // Obtén todos los libros
-        $GENEROS = Libro:: GENEROS;
+        // Obtenemos los libros paginados, 5 por página
+        $libros = Libro::paginate(5); // 5 libros por página
+    
+        // Pasamos los generos y editoriales a la vista
+        $GENEROS = Libro::GENEROS;
         $EDITORIALES = Libro::EDITORIALES;
-
+    
+        // Retornamos la vista con los libros, generos y editoriales
         return view('libros.index', [
             'libros' => $libros,
             'EDITORIALES' => $EDITORIALES,
             'GENEROS' => $GENEROS,
-            ]);
+        ]);
     }
-    
 
+    
+    
     public function create(){
 
         $GENEROS = Libro:: GENEROS;
@@ -33,20 +38,25 @@ class LibroController extends Controller
         ]); // Cambiado para apuntar a 'libros/create.blade.php'
     }
 
-    public function alta_libro(){
+    public function alta_libro(Request $request){
+        // Crear una nueva instancia del modelo Libro
         $libro = new Libro();
     
-        $libro->nombre = 'El señor de los anillos';
-        $libro->autor = 'Tolkien';
-        $libro->editorial = 'Anaya';
-        $libro->anioPublicacion = '1998';
-        $libro->genero = 'Fantasía';
-        $libro->descripcion = 'Enanos y orcos';
+        // Asignar los valores del formulario a las propiedades del modelo
+        $libro->nombre = $request->input('nombre');         // Asignar el nombre del libro
+        $libro->autor = $request->input('autor');           // Asignar el autor del libro
+        $libro->editorial = $request->input('editorial');   // Asignar la editorial del libro
+        $libro->anioPublicacion = $request->input('anioPublicacion');  // Asignar el año de publicación
+        $libro->genero = $request->input('genero');         // Asignar el género del libro (sigla)
+        $libro->descripcion = $request->input('descripcion');  // Asignar la descripción del libro
     
+        // Guardar el libro en la base de datos
         $libro->save();
-        return redirect('/libros.mostar_libro')->with('success', 'Libro creado con éxito');
-
+    
+        // Redirigir al listado de libros con un mensaje de éxito
+        return redirect()->route('libros.index')->with('success', 'Libro creado con éxito');
     }
+    
 
   
 

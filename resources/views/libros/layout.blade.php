@@ -3,91 +3,276 @@
 <head>
 <title>@yield('title')</title>
 <style>
-     body {
-            font-family: 'Helvetica Neue', Arial, sans-serif;
-            background-color: #f5f5f5;
-            margin: 0;
-            padding: 0;
-        }
+   body {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    background-color: #f5f5f5;
+    margin: 0;
+    padding: 0;
+}
 
-        .container {
-            width: 80%;
-            max-width: 1200px;
-            margin: 40px auto;
-            padding: 30px;
-            background-color: #fff;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
-        }
+/* HEADER */
+header {
+    padding: 20px;
+    text-align: center;
+    color: #333;
+}
 
-        h1 {
-            color: #2c6b32;
-            text-align: center;
-            font-size: 2rem;
-            margin-bottom: 30px;
-        }
+header h1 {
+    font-size: 2.5rem;
+    margin: 0;
+}
 
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
+header p {
+    font-size: 1.2rem;
+    margin-top: 10px;
+    font-weight: lighter;
+}
 
-        th, td {
-            padding: 12px 15px;
-            text-align: left;
-            font-size: 1rem;
-            color: #333;
-        }
+/* Enlaces en el HEADER */
+nav {
+    margin-top: 20px;
+}
 
-        th {
-            background-color: #4caf50;
-            color: #fff;
-            text-transform: uppercase;
-            font-weight: bold;
-        }
+nav a {
+    margin: 0 15px;
+    font-size: 1.1rem;
+    color: #4caf50;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
 
-        tr:nth-child(even) {
-            background-color: #fafafa;
-        }
+nav a:hover {
+    color: #2c6b32;
+}
 
-        tr:hover {
-            background-color: #e5f1e4;
-        }
+/* HERO */
+.hero {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 40px;
+    background-color: #fff;
+}
 
-        .btn {
-            display: inline-block;
-            padding: 10px 20px;
-            color: white;
-            background-color: #4caf50;
-            border: none;
-            border-radius: 4px;
-            text-decoration: none;
-            font-size: 14px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
+.hero-text {
+    max-width: 600px;
+}
 
-        .btn:hover {
-            background-color: #45a049;
-        }
+.hero-text h2 {
+    color: #2c6b32;
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
 
-        .btn-danger {
-            background-color: #f44336;
-        }
+.hero-text p {
+    color: #555;
+    font-size: 1.1rem;
+    line-height: 1.8;
+}
 
-        .btn-danger:hover {
-            background-color: #d32f2f;
-        }
+.hero-image {
+    max-width: 600px;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
 
-        .actions {
-            display: flex;
-            gap: 10px;
-        }
+/* FOOTER */
+footer {
+    color: white;
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px;
+    background-color: transparent;
+}
 
-        .btn-container {
-            text-align: right;
-            margin-bottom: 20px;
-        }
+footer p {
+    font-size: 1rem;
+}
+
+/* Estilo adicional */
+.container {
+    width: 85%;
+    max-width: 1400px;
+    margin: 60px auto;
+    padding: 40px;
+    background-color: #fff;
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+h1 {
+    color: #2c6b32;
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+}
+
+p {
+    color: #555;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 20px;
+}
+
+/* Estilo de tabla */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 12px 15px;
+    text-align: left;
+    font-size: 1rem;
+    color: #333;
+}
+
+th {
+    background-color: #4caf50;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+tr:nth-child(even) {
+    background-color: #fafafa;
+}
+
+tr:hover {
+    background-color: #e5f1e4;
+}
+
+/* Botones */
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    color: white;
+    background-color: #4caf50;
+    border: none;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #45a049;
+}
+
+.btn-danger {
+    background-color: #f44336;
+}
+
+.btn-danger:hover {
+    background-color: #d32f2f;
+}
+
+.actions {
+    display: flex;
+    gap: 10px;
+}
+
+.btn-container {
+    text-align: right;
+    margin-bottom: 20px;
+}
+
+/* Paginación */
+.pagination {
+    list-style-type: none;  /* Eliminar los puntos de lista */
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    gap: 15px;  /* Espaciado entre los enlaces */
+    flex-wrap: wrap;
+}
+
+.pagination li {
+    display: inline-block;
+}
+
+.pagination a,
+.pagination .page-link {
+    padding: 12px 20px;  /* Más relleno para un botón más grande */
+    margin: 0 5px;
+    background-color: #f1f1f1;
+    border: 1px solid #ddd;
+    color: #4caf50; /* Verde */
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 50px;  /* Bordes redondeados para un estilo moderno */
+    font-size: 14px;
+    font-weight: 600;  /* Texto en negrita */
+    text-align: center;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease; /* Transición suave y efecto de escala */
+}
+
+/* Hover cuando pasas el mouse por encima */
+.pagination a:hover {
+    background-color: #4caf50; /* Verde al pasar el mouse */
+    color: white;  /* Texto blanco */
+    border-color: #45a049; /* Borde un poco más oscuro */
+    transform: scale(1.1); /* Efecto de ampliación */
+}
+
+/* Elemento activo */
+.pagination .active a {
+    background-color: #4caf50; /* Verde activo */
+    color: white;  /* Texto blanco */
+    border-color: #45a049; /* Borde más oscuro */
+    box-shadow: 0 0 10px rgba(76, 175, 80, 0.5);  /* Sombra suave */
+}
+
+/* Para la paginación cuando está deshabilitada (ej. primera página) */
+.pagination .disabled a {
+    background-color: #e0e0e0;
+    color: #b0b0b0;
+    pointer-events: none;
+    cursor: not-allowed;
+    transform: none;  /* Sin efecto de escala */
+}
+
+/* Paginación con iconos */
+.pagination .page-link svg {
+    width: 16px;
+    height: 16px;
+    margin-right: 5px; /* Separación entre el icono y el texto */
+}
+
+/* Paginación con bordes y sombras sutiles */
+.pagination a,
+.pagination .page-link {
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);  /* Sombra sutil para dar profundidad */
+}
+
+.pagination a:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);  /* Sombra más fuerte en el hover */
+}
+
+
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .hero {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .hero-text {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .hero-image {
+        max-width: 100%;
+        width: 100%;
+        height: auto;
+    }
+}
+
 </style>
 </head>
 

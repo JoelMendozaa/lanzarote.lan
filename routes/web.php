@@ -37,7 +37,7 @@ Route::get('/login/', function () {
 
 // Ejercicio 1 Ruta Basica:
 Route::get('/' , function () { 
-    return 'welcome';
+    return view('/welcome');
 });
 
 // Ejercicio 1 Rutas con parámetros:
