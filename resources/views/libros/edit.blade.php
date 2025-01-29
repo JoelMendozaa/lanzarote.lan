@@ -7,7 +7,7 @@
         <h1 class="form-title">Editar Libro: {{ $libro->nombre }}</h1>
 
         <!-- Formulario de edición de libro -->
-        <form action="{{ url('/actualizar-libro', $libro->id) }}" method="POST" class="form-create">
+        <form action="{{ url('/libros', $libro->id) }}" method="POST" class="form-create">
             @csrf
             @method('PUT')
 
