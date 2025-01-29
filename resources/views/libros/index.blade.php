@@ -32,7 +32,8 @@
                     <td>{{ isset(App\Models\Libro::GENEROS[$libro->genero]) ? App\Models\Libro::GENEROS[$libro->genero] : 'Desconocido' }}</td>
                     <td>{{ $libro->descripcion }}</td>
                     <td class="actions">
-                        <a href="{{ url('/libros/edit/', $libro->id) }}" class="btn">Editar</a>
+                        <a href="{{ url('/visualizar-libro', $libro->id) }}" class="btn">Ver</a>
+                        <a href="{{ url('/libros/edit', $libro->id) }}" class="btn">Editar</a>
                         <form action="{{ route('libros.delete', $libro->id) }}" method="POST" style="display:inline;">
                             @csrf
                             @method('DELETE')

@@ -273,6 +273,83 @@ tr:hover {
     }
 }
 
+/* Estilo para el formulario de creación */
+.form-title {
+    color: #2c6b32;
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+}
+
+/* Formulario */
+.form-create {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Estilos de campos del formulario */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-label {
+    display: block;
+    font-size: 1.1rem;
+    color: #333;
+    margin-bottom: 8px;
+}
+
+.form-input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 1rem;
+    color: #333;
+    background-color: #f9f9f9;
+    transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+.form-input:focus {
+    border-color: #4caf50;
+    background-color: #eef6ec;
+    outline: none;
+}
+
+/* Botón de envío */
+.form-btn {
+    display: inline-block;
+    padding: 12px 20px;
+    color: white;
+    background-color: #4caf50;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    width: 100%;
+    text-align: center;
+}
+
+.form-btn:hover {
+    background-color: #45a049;
+    transform: scale(1.05);
+}
+
+.form-btn:active {
+    transform: scale(1);
+}
+
+/* Estilos para los select y textarea */
+textarea.form-input {
+    height: 150px;
+    resize: none;
+}
+
 </style>
 </head>
 

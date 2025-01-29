@@ -89,7 +89,7 @@ Route::get('/procesar-datos' , [DatosController::class, 'form_procesar']);
 
 
 
-/* TAREA 2 */
+
 
 // Rutas para CRUD de libros
 Route::get('/libros', [LibroController::class, 'index'])->name('libros.index'); // Para mostrar el listado
@@ -99,4 +99,4 @@ Route::get('/mostrar-libro/{id}', [LibroController::class, 'mostrar_libro']); //
 Route::get('/mostrar-todos', [LibroController::class, 'mostrar_todos']); // Listar todos los libros
 Route::put('/actualizar-libro/{id}', [LibroController::class, 'actualizar_libro']); // Actualizar libro
 Route::delete('/libros/{libro}', [LibroController::class, 'eliminar_libro'])->name('libros.delete'); // Eliminar libro
-
+Route::get('/visualizar-libro/{id}', [LibroController::class,'visualizar_libro']);

@@ -86,25 +86,38 @@ class LibroController extends Controller
 
 
 
-
-    // Actualizar un libro
-    public function actualizar_libro(Request $request, $id){
+// Actualizar libro (recibe el formulario de edición y lo actualiza)
+    public function actualizar_libro(Request $request, $id)
+    {
         $libro = Libro::find($id);
-
-        if ($libro) {
-            $libro->nombre = $request->input('nombre', $libro->nombre);
-            $libro->autor = $request->input('autor', $libro->autor);
-            $libro->editorial = $request->input('editorial', $libro->editorial);
-            $libro->anioPublicacion = $request->input('anioPublicacion', $libro->anioPublicacion);
-            $libro->genero = $request->input('genero', $libro->genero);
-            $libro->descripcion = $request->input('descripcion', $libro->descripcion);
-
-            $libro->save();
-
-            return response()->json(['message' => 'Libro actualizado exitosamente', 'libro' => $libro]);
-        } else {
-            return response()->json(['message' => 'Libro no encontrado'], 404);
+    
+        if (!$libro) {
+            return redirect()->route('libros.index')->with('error', 'El libro no fue encontrado');
         }
+    
+        // Validar los datos antes de actualizar (opcional)
+        $request->validate([
+            'nombre' => 'required|string|max:255',
+            'autor' => 'required|string|max:255',
+            'editorial' => 'required|string|max:255',
+            'anioPublicacion' => 'required|integer|min:1000|max:9999',
+            'genero' => 'required|string|max:2',
+            'descripcion' => 'required|string'
+        ]);
+    
+        // Actualizar los campos del libro
+        $libro->nombre = $request->input('nombre');
+        $libro->autor = $request->input('autor');
+        $libro->editorial = $request->input('editorial');
+        $libro->anioPublicacion = $request->input('anioPublicacion');
+        $libro->genero = $request->input('genero');
+        $libro->descripcion = $request->input('descripcion');
+    
+        // Guardar los cambios
+        $libro->save();
+    
+        // Redirigir con mensaje de éxito
+        return redirect()->route('libros.index')->with('success', 'Libro actualizado con éxito');
     }
 
 
@@ -132,4 +145,49 @@ class LibroController extends Controller
         return view('libros.libro',compact('libros','GENEROS', 'EDITORIALES'));
 
     }
+
+
+
+  // Editar libro (cargar el formulario con los datos actuales del libro)
+public function editar_libro($id)
+{
+    // Buscar el libro por ID
+    $libro = Libro::find($id);
+
+    // Si el libro no existe, redirigir con error
+    if (!$libro) {
+        return redirect()->route('libros.index')->with('error', 'El libro no fue encontrado');
+    }
+
+    // Pasar los datos del libro y las listas de generos/editoriales a la vista
+    $GENEROS = Libro::GENEROS;
+    $EDITORIALES = Libro::EDITORIALES;
+
+    return view('libros.edit', [
+        'libro' => $libro,
+        'EDITORIALES' => $EDITORIALES,
+        'GENEROS' => $GENEROS
+    ]);
+}
+
+
+// Visualizar un libro por ID
+public function visualizar_libro($id)
+{
+    $libro = Libro::find($id);
+
+    if (!$libro) {
+        return redirect()->route('libros.index')->with('error', 'El libro no fue encontrado');
+    }
+
+    $GENEROS = Libro::GENEROS;
+    $EDITORIALES = Libro::EDITORIALES;
+
+    return view('libros.visualizar', [
+        'libro' => $libro,
+        'EDITORIALES' => $EDITORIALES,
+        'GENEROS' => $GENEROS
+    ]);
+}
+
 }
