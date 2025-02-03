@@ -12,6 +12,7 @@ return Application::configure(basePath: dirname(__DIR__))
     )
     ->withMiddleware(function (Middleware $middleware) {
         //
+        $middleware->validateCsrfTokens(['/procesar_datos']);
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //
