@@ -30,7 +30,7 @@
 
             </td>
             <td style="">{{ $libro->nombre }}</td>
-            <td style="max-width: 200px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">{{ array_key_exists($libro->editorial, \App\Models\Libro::EDITORIALES) ? \App\Models\Libro::EDITORIALES[$libro->editorial] : $libro->editorial }}</td>
+            <td style="max-width: 200px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">{{ $EDITORIALES[$libro->editorial] }}</td> 
             <td>{{ $libro->autor }}</td> 
             <td style="max-width: 200px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">{{ $libro->descripcion }}</td> 
             <td>{{ $libro->anho }}</td> 

@@ -1,13 +1,13 @@
 @extends('layout')
 
+
 @section('title', 'Alta de libro')
 
 @section('content')
 
-    {{-- Agrega este dd para depurar el contenido de $libro --}}
-    {{ dd($libro) }}
 
     @php
+
         if (session('formData'))
             $libro = session('formData');
 
@@ -22,13 +22,17 @@
             else
                 $boton_guardar = '';
         }
+            
+
+
+
     @endphp
 
     <br />
     @if(session('success'))
         <p style="text-align:center;" class="alert alert-success">{{ session('success') }}</p>
     @endif
-
+    
     <form action="{{ route('libros.almacenar') }}" method="POST">
         @csrf
         <input type="hidden" name="oper" value="{{ $oper }}" />
@@ -57,7 +61,9 @@
                     @php
                         $selected = old('genero') == $clave_genero || $libro->genero == $clave_genero ? 'selected="selected"' : '';
                     @endphp
-
+        
+    
+        
                     <option value="{{ $clave_genero }}" {{ $selected }}>{{ $texto_genero }}</option>
 
                 @endforeach
@@ -69,7 +75,7 @@
             <select {{ $disabled }}  name="editorial" id="editorial" class="form-select form-select-sm" aria-label=".form-select-sm example">
                 <option value="">Selecciona una editorial...</option>
                 @foreach ($EDITORIALES as $clave_editorial => $texto_editorial)
-
+        
                     @php
                         $selected = old('editorial') == $clave_editorial || $libro->editorial == $clave_editorial ? 'selected="selected"' : '';
                     @endphp
@@ -87,10 +93,16 @@
             @error('descripcion') <p style="color: red;">{{ $message }}</p> @enderror
         </div>
 
+
+
         @php
+
         echo $boton_guardar ;
+    
         @endphp
 
     </form>
 
 @endsection
+
+
